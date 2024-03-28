@@ -1,3 +1,1 @@
-libMonoDebuggerHandling.dylib filter=lfs diff=lfs merge=lfs -text
-libburst-llvm-10.dylib filter=lfs diff=lfs merge=lfs -text
 libburst-llvm-16.dylib filter=lfs diff=lfs merge=lfs -text
