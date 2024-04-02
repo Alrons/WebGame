@@ -9,6 +9,7 @@ using JetBrains.Annotations;
 
 public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    
     private RectTransform recetTransform;
     private Image image;
     private Vector2 startPos;// стартовая позиция
