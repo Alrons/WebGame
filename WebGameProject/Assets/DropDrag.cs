@@ -14,7 +14,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private Image image;
     private Vector2 startPos;// стартовая позиция
     public GameObject form;//место назначения формы на уровне 
-    //public GameObject level;
+    
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
 
         image.raycastTarget = false;
-        print(eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition);
+        
         startPos = image.transform.position;
 
     }
@@ -34,6 +34,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public void OnDrag(PointerEventData eventData)// перемещение
     {
         recetTransform.anchoredPosition += eventData.delta;
+        print(eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition);
 
     }
 
@@ -42,15 +43,12 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         image.raycastTarget = true;
         Vector2 posObject = eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition;//определяет позицию объекта
+        Vector2 pos  = image.transform.position;
+        Vector2 posForm =form.GetComponent<RectTransform>().anchoredPosition;
 
-
-        if (MathF.Abs(posObject.x - form.transform.localPosition.x) <= 100f &&
-            MathF.Abs(posObject.y - form.transform.localPosition.y) <= 100f)
+        if (MathF.Abs(posObject.x - posForm.x) <= 100f &&
+            MathF.Abs(posObject.y - posForm.y) <= 100f)
         {
-            //if (level.name == "level1")
-            //{
-            //    this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение            
-            //}
             this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение     
 
 
