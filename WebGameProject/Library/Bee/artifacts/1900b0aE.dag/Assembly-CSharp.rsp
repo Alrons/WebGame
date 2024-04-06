@@ -375,6 +375,7 @@
 -analyzer:"B:/Unity/2022.3.22f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/ClassOfItem.cs"
 "Assets/DropDrag.cs"
+"Assets/ForCoins.cs"
 "Assets/Scripts/bonus.cs"
 "Assets/spawn object.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"

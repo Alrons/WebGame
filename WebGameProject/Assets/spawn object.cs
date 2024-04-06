@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using static ClassOfItem;
@@ -13,8 +12,9 @@ public class spawnobject : MonoBehaviour
     public Text Title;
     public Text Price;
     public Text Description;
-    static int count;
+    int count;
     public static List<ClassOfItem> list = new List<ClassOfItem>();
+    static public int coins; 
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +24,8 @@ public class spawnobject : MonoBehaviour
         list.Add(new ClassOfItem("Title3", "describtion3", 500, "Path", 2));
         list.Add(new ClassOfItem("Title4", "describtion4", 150, "Path",1));
         list.Add(new ClassOfItem("Title5", "describtion5", 200, "Path",2));
-        list.Add(new ClassOfItem("Title6", "describtion6", 450, "Path",2));
-        list.Add(new ClassOfItem("Title7", "describtion7", 400, "Path",3));
-        list.Add(new ClassOfItem("Title8", "describtion8", 999, "Path",4));
-        list.Add(new ClassOfItem("Title9", "describtion9", 1, "Path",5));
-        list.Add(new ClassOfItem("Title10", "describtion10", 430, "Path",6));
+        coins = 1000;
+        
         StartCoroutine(SpawnCD());
         
         

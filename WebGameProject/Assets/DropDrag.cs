@@ -23,7 +23,9 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public GameObject Form5;
     public GameObject Form6;//место назначения формы на уровне 
     public Text Title;
-    
+    public Text price;
+    public Transform Context;
+    private string FailBy;
 
     private void Awake()
     {
@@ -67,7 +69,11 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         recetTransform.anchoredPosition += eventData.delta;
     }
-
+    private IEnumerator RetarnTitle()
+    {
+        yield return new WaitForSeconds(2);
+        Title.text = FailBy;
+    }
     public void OnEndDrag(PointerEventData eventData)//опускание 
     {
         image.raycastTarget = true;
@@ -78,7 +84,20 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         if (MathF.Abs(posObject.x - posForm.x) <= 100f &&
             MathF.Abs(posObject.y - posForm.y) <= 100f)
         {
-            this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение     
+            if (int.Parse(price.text) <= coins)
+            {
+                this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение
+                coins = coins - int.Parse(price.text);
+            }
+            else
+            {
+                image.transform.position = startPos;// возвращение на место если условие не верно
+                FailBy = Title.text;
+                Title.text = "Деньги где!";
+                StartCoroutine(RetarnTitle());
+
+            }
+                                                                                                      
 
 
         }
