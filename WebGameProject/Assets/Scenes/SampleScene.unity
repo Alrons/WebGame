@@ -1518,6 +1518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d0b0bc73d978a4ea0b6ff811500c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragObject: {fileID: 1488761701}
   Form1: {fileID: 323373439}
   Form2: {fileID: 1444505706}
   Form3: {fileID: 483593870}

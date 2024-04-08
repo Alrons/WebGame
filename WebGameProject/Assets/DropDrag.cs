@@ -9,10 +9,12 @@ using JetBrains.Annotations;
 using static spawnobject;
 using Unity.VisualScripting;
 
+
 public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     
     private RectTransform recetTransform; 
+    public GameObject dragObject;
     private Image image;// Картинка с префаба 
     private Vector2 startPos;// стартовая позиция
     private GameObject form;// общая переменная в которую мы будем назначать место для большего удобства
@@ -95,12 +97,17 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         // Математика 
         if (MathF.Abs(posObject.x - posForm.x) <= 100f &&
-            MathF.Abs(posObject.y - posForm.y) <= 100f)//Тут ряльна математика
+            MathF.Abs(posObject.y - posForm.y) <= 100f &&
+            MathF.Abs(Context.transform.position.y - Context.transform.position.y) <= 100f)//Тут ряльно какая то математика
         {
             // Вычитаем цену из банка
             if (int.Parse(price.text) <= coins)
             {
                 this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение к позициям
+                var spawn = Instantiate(this, this.transform.position, Quaternion.identity); // Спавним обект для спавна с указываем коардинаты
+                spawn.transform.SetParent(form.transform); // Показываем куда спавниться объекту
+                spawn.transform.localScale = new Vector3(1, 1, 1); // При спавне слишком большие размеры, уменьшаем их
+                Destroy(this.dragObject); // Унечтожаем объект который мы перетаскивали
                 coins = coins - int.Parse(price.text);// Вычитаем из банка
 
             }
@@ -108,7 +115,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             //Если цена больше чем есть в банке мы на 2 секунды меняем таитл на ДЕНЬГИ ГДЕ!
             else
             {
-                image.transform.position = startPos;// возвращение на место если условие не верно
+                this.transform.position = startPos;// возвращение на место если условие не верно
                 FailBy = Title.text;//Сохраняем текс в переменную
                 Title.text = "Деньги где!";// Зазменяем текст тайтла
                 StartCoroutine(RetarnTitle());// Переход на метод в котором стоит таимер на 2 секунды и возращяем значение 
@@ -120,7 +127,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         }
         else
         {
-            image.transform.position = startPos;// возвращение на место если условие не верно 
+            this.transform.position = startPos;// возвращение на место если условие не верно 
 
         }
 

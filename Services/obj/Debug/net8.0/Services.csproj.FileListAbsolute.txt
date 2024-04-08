@@ -1,0 +1,12 @@
+A:\GitRepository\WebGame\Services\bin\Debug\net8.0\Services.deps.json
+A:\GitRepository\WebGame\Services\bin\Debug\net8.0\Services.dll
+A:\GitRepository\WebGame\Services\bin\Debug\net8.0\Services.pdb
+A:\GitRepository\WebGame\Services\obj\Debug\net8.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+A:\GitRepository\WebGame\Services\obj\Debug\net8.0\Services.AssemblyInfoInputs.cache
+A:\GitRepository\WebGame\Services\obj\Debug\net8.0\Services.AssemblyInfo.cs
+A:\GitRepository\WebGame\Services\obj\Debug\net8.0\Services.csproj.CoreCompileInputs.cache
+A:\GitRepository\WebGame\Services\obj\Debug\net8.0\Services.sourcelink.json
+A:\GitRepository\WebGame\Services\obj\Debug\net8.0\Services.dll
+A:\GitRepository\WebGame\Services\obj\Debug\net8.0\refint\Services.dll
+A:\GitRepository\WebGame\Services\obj\Debug\net8.0\Services.pdb
+A:\GitRepository\WebGame\Services\obj\Debug\net8.0\ref\Services.dll

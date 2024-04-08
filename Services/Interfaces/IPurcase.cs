@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {
-    internal interface IPurcase
+    internal interface IPurcase : IAccount
     {
+        string Сancellation();
+        int GetPrice();
     }
 }
+
