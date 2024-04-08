@@ -29,6 +29,9 @@ public class spawnobject : MonoBehaviour
         list.Add(new ClassOfItem("Title3", "describtion3", 500, "Path", 2));
         list.Add(new ClassOfItem("Title4", "describtion4", 150, "Path",1));
         list.Add(new ClassOfItem("Title5", "describtion5", 200, "Path",2));
+        list.Add(new ClassOfItem("Title3", "describtion3", 500, "Path", 2));
+        list.Add(new ClassOfItem("Title4", "describtion4", 150, "Path", 1));
+        list.Add(new ClassOfItem("Title5", "describtion5", 200, "Path", 2));
 
         // ”казываем изначальное колличество цены
         coins = 1000;

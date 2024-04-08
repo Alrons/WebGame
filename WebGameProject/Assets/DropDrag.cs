@@ -102,6 +102,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             {
                 this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение к позициям
                 coins = coins - int.Parse(price.text);// Вычитаем из банка
+
             }
 
             //Если цена больше чем есть в банке мы на 2 секунды меняем таитл на ДЕНЬГИ ГДЕ!
