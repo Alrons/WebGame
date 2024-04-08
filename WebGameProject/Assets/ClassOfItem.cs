@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Шаблон для заполнения списка
 public class ClassOfItem
 {
     public string Title { get; set; }
@@ -10,6 +12,7 @@ public class ClassOfItem
     public string Image { get; set; }
     public int Place {  get; set; }
 
+    // Конструктор
     public ClassOfItem(string title, string description, int price, string Image, int place)
     {
         this.Title = title;
