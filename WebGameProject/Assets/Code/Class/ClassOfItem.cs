@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEditor.SceneManagement;
+using UnityEngine; 
 //using Services.Interfaces.ICatalog; 
 // Шаблон для заполнения списка
 public class ClassOfItem //: ICatalog 
 {
+    
     public string Title { get; set; }
     public string Description { get; set; }
     public int Price { get; set; }
@@ -15,6 +17,9 @@ public class ClassOfItem //: ICatalog
 
     // Коафицент умнажения мощьности при добовлнения еще одного item в одно и тоже место
     public double XPover { get; set; }
+    //Создаем публичный список к которому будем обращяться из других фаилов
+    public static List<ClassOfItem> list = new List<ClassOfItem>();
+    public static int coins;
 
     // Конструктор
     public ClassOfItem(string title, string description, int price, string Image, int place, int Health, double Power, double XPover)
@@ -29,6 +34,6 @@ public class ClassOfItem //: ICatalog
         this.XPover = XPover;
 
     }
-
+    
 }
 
