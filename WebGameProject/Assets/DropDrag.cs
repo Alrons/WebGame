@@ -13,7 +13,7 @@ using Unity.VisualScripting;
 public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     
-    private RectTransform recetTransform; 
+    private RectTransform recetTransform;
     public GameObject dragObject;
     private Image image;// Картинка с префаба 
     private Vector2 startPos;// стартовая позиция
@@ -51,18 +51,22 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public void OnBeginDrag(PointerEventData eventData)//подняте 
     {
         image.raycastTarget = false;
+        
 
         // Берем последнее значение из списка и сравниваем 2 тайтла, который в списке и который в префабе если совпадает, то выбираем место 6
         if (Title.text == list[^1].Title)
         {
             metod(6);
+            
         }
         startPos = image.transform.position; // Берем коарденаты изначальной позиций и запоминаем
+        form.GetComponent<Image>().color = new Color(255f,255f,255f,0.7f);//подсветка
         
+
 
     }
 
-    // Метод в котором мы решаем из какой площядки будем брать коарденаты, понадобится для дальнейшего перетаскивания 
+    // Метод в котором мы решаем из какой площядки будем брать координаты, понадобится для дальнейшего перетаскивания 
     private void metod(int nomber)
     {
         print(nomber);
@@ -77,7 +81,8 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnDrag(PointerEventData eventData)// перемещение 
     {
-        recetTransform.anchoredPosition += eventData.delta; 
+        recetTransform.anchoredPosition += eventData.delta;
+        
     }
 
     // Метод в которо мы ждем 2 секунды и возращаем Тайтл обратно 
@@ -94,21 +99,25 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         //Берем позицию места в которое будем вставлять
         Vector2 posForm = form.GetComponent<RectTransform>().anchoredPosition;
+        
 
         // Математика 
         if (MathF.Abs(posObject.x - posForm.x) <= 100f &&
             MathF.Abs(posObject.y - posForm.y) <= 100f &&
             MathF.Abs(Context.transform.position.y - Context.transform.position.y) <= 100f)//Тут ряльно какая то математика
         {
+            
             // Вычитаем цену из банка
             if (int.Parse(price.text) <= coins)
             {
                 this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение к позициям
+
                 var spawn = Instantiate(this, this.transform.position, Quaternion.identity); // Спавним обект для спавна с указываем коардинаты
                 spawn.transform.SetParent(form.transform); // Показываем куда спавниться объекту
                 spawn.transform.localScale = new Vector3(1, 1, 1); // При спавне слишком большие размеры, уменьшаем их
                 Destroy(this.dragObject); // Унечтожаем объект который мы перетаскивали
                 coins = coins - int.Parse(price.text);// Вычитаем из банка
+                form.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);//подсветка
 
             }
 
@@ -116,18 +125,20 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             else
             {
                 this.transform.position = startPos;// возвращение на место если условие не верно
-                FailBy = Title.text;//Сохраняем текс в переменную
-                Title.text = "Деньги где!";// Зазменяем текст тайтла
+                FailBy = Title.text;//Сохраняем текст в переменную
+                Title.text = "Деньги где!";// Заменяем текст тайтла
                 StartCoroutine(RetarnTitle());// Переход на метод в котором стоит таимер на 2 секунды и возращяем значение 
-
+                
             }
-                                                                                                      
 
 
+            
         }
         else
         {
+           
             this.transform.position = startPos;// возвращение на место если условие не верно 
+            form.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0.1f);//подсветка
 
         }
 

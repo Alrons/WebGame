@@ -13,7 +13,7 @@ public class ClassOfItem //: ICatalog
     public int Health { get; set; }
     public double Power { get; set; }
 
-    // Коафицент умнажения мошьности при добовлнения еще одного item в одно и тоже место
+    // Коафицент умнажения мощьности при добовлнения еще одного item в одно и тоже место
     public double XPover { get; set; }
 
     // Конструктор
