@@ -1355,7 +1355,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -304, y: 264}
+  m_AnchoredPosition: {x: -304, y: 261.5}
   m_SizeDelta: {x: 303, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1325820724
@@ -1656,6 +1656,7 @@ MonoBehaviour:
   Health: {fileID: 668675347}
   Power: {fileID: 1970769904}
   XPower: {fileID: 193637001}
+  scrollRect: {fileID: 1167659199}
   Context: {fileID: 1325820723}
 --- !u!114 &1488761707
 MonoBehaviour:

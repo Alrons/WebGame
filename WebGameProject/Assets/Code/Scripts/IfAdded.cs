@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static AddedPrefab;
+using static DropDrag;
 
 public class IfAdded : MonoBehaviour
 {
@@ -25,8 +26,11 @@ public class IfAdded : MonoBehaviour
                 print(Cheack);
                 Cheack = i+1;
                 MyPlace = Added[i].Plase;
+                DropDrag script = GameObject.GetComponent<DropDrag>();
+                script.enabled = false;
             }
         }
+
 
     }
     private void Update()
@@ -36,9 +40,9 @@ public class IfAdded : MonoBehaviour
         {
             if (Added[Cheack-1].Health != int.Parse(Health.text))
             {
-                
-                Health.text = string.Format("{0}",Added[Cheack - 1].Health * Added[Cheack - 1].XPower);
-                Power.text = string.Format("{0}", Added[Cheack - 1].Power * Added[Cheack - 1].XPower);
+                print(Health.text);
+                Health.text = string.Format("{0}",Added[Cheack - 1].Health);
+                Power.text = string.Format("{0}", Added[Cheack - 1].Power);
 
             }
         }

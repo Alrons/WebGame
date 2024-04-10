@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "A:\\GitRepository\\WebGame\\Services\\Services.csproj",
+      "projectUniqueName": "C:\\GitHub_Repository\\WebGame\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "A:\\GitRepository\\WebGame\\Services\\Services.csproj",
+      "projectPath": "C:\\GitHub_Repository\\WebGame\\Services\\Services.csproj",
       "packagesPath": "C:\\Users\\titun\\.nuget\\packages\\",
-      "outputPath": "A:\\GitRepository\\WebGame\\Services\\obj\\",
+      "outputPath": "C:\\GitHub_Repository\\WebGame\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,7 +33,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -49,7 +49,7 @@ public class AddedPrefab: MonoBehaviour
             if (plase == Added[i].Plase)
             {
                 Added[i].Health = Health;
-                Added[i].Power = Power;
+                Added[i].Power = Added[i].Power * XPower;
                 Added[i].XPower = XPower;
             }
         }

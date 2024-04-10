@@ -36,6 +36,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public Text Health;
     public Text Power;
     public Text XPower;
+    public ScrollRect scrollRect;
 
     // Переменные с которыми будет проходить математика
     private int BackPrice;
@@ -46,6 +47,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public Transform Context;//Мусор
     private string FailBy;//Просто для запоменания 
+
 
 
 
@@ -94,9 +96,10 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             BackPower = list[^1].Power;
             BackXPower = list[^1].XPover;
         }
+        scrollRect.vertical = false;
         image.raycastTarget = false;
         startPos = image.transform.position; // Берем коарденаты изначальной позиций и запоминаем
-        form.GetComponent<Image>().color = new Color(255f,255f,255f,0.7f);//подсветка
+        form.GetComponent<Image>().color = new Color(255f,255f,255f,0.3f);//подсветка
 
     }
 
@@ -121,6 +124,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnEndDrag(PointerEventData eventData)//опускание 
     {
+        scrollRect.vertical = true;
         image.raycastTarget = true;
         Vector2 posObject = eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition;//определяет позицию объекта
 
