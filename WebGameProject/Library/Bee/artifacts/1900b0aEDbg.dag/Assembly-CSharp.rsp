@@ -378,6 +378,7 @@
 "Assets/Code/Class/GameObjId.cs"
 "Assets/Code/Scripts/DropDrag.cs"
 "Assets/Code/Scripts/ForCoins.cs"
+"Assets/Code/Scripts/ForSummPower.cs"
 "Assets/Code/Scripts/IfAdded.cs"
 "Assets/Code/Scripts/spawn object.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"

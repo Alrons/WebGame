@@ -43,7 +43,7 @@ public class SpawnObject : MonoBehaviour
         list.Add(new ClassOfItem("Title5", "describtion5", 200, "Path", 2, 180, 22, 1.8));
 
         // ”казываем изначальное колличество цены
-        coins = 1000;
+        coins = 10000;
         
         StartCoroutine(SpawnCD());
         

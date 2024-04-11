@@ -130,12 +130,11 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         //Берем позицию места в которое будем вставлять
         Vector2 posForm = form.GetComponent<RectTransform>().anchoredPosition;
-        
+
 
         // Математика 
         if (MathF.Abs(posObject.x - posForm.x) <= 100f &&
-            MathF.Abs(posObject.y - posForm.y) <= 100f &&
-            MathF.Abs(Context.transform.position.y - Context.transform.position.y) <= 100f)//Тут ряльно какая то математика
+            MathF.Abs(posObject.y - posForm.y) <= 100f)//Тут ряльно какая то математика
         {
             
             // Если цена на картинке меньше чем в коде 
@@ -147,18 +146,21 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                 form.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);//подсветка
                 if (addedPrefab.CheckIfAdded(Place))
                 {
+
                     addedPrefab.Updating(BackHealth,BackPower,BackXPower,Place);
+                    CountsUpdate.Add(1);
                     Destroy(dragObject);
 
                 }
                 else
-                {//Добовляем в список в котором хранятся добавленные предметы
+                {
+                    CountsUpdate.Add(1);
+                    //Добовляем в список в котором хранятся добавленные предметы
                     Added.Add(new AddedPrefab(Place, CopyPref(this.dragObject, this.transform.position, form.transform), BackHealth, BackPower, BackXPower));
                     Destroy(this.dragObject); // Унечтожаем объект который мы копировали 
                 }
                 
                 
-                print(BackPrice);
                 coins = coins - BackPrice;// Вычитаем из банка
             }
             //Если цена больше чем есть в банке мы на 2 секунды меняем таитл на ДЕНЬГИ ГДЕ!

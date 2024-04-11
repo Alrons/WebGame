@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using static AddedPrefab;
 using static DropDrag;
 
+
 public class IfAdded : MonoBehaviour
 {
     public GameObject GameObject;
@@ -23,7 +24,7 @@ public class IfAdded : MonoBehaviour
         {
             if (Added[i].GameObject == GameObject)
             {
-                print(Cheack);
+                
                 Cheack = i+1;
                 MyPlace = Added[i].Plase;
                 DropDrag script = GameObject.GetComponent<DropDrag>();

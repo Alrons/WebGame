@@ -15,6 +15,9 @@ public class AddedPrefab: MonoBehaviour
     public double Power { get; set; }
     public double XPower { get; set; }
 
+    public static List<int> CountUpdating = new List<int>();
+    public static List<int> CountsUpdate = new List<int>();
+
     //Создаем публичный список к которому будем обращяться из других фаилов
     public static List<AddedPrefab> Added = new List<AddedPrefab>();
 
@@ -44,6 +47,7 @@ public class AddedPrefab: MonoBehaviour
     }
     public void Updating(int Health, double Power, double XPower, int plase)
     {
+        CountUpdating.Add(plase);
         for (int i = 0;i < Added.Count;i++)
         {
             if (plase == Added[i].Plase)
@@ -51,6 +55,7 @@ public class AddedPrefab: MonoBehaviour
                 Added[i].Health = Health;
                 Added[i].Power = Added[i].Power * XPower;
                 Added[i].XPower = XPower;
+
             }
         }
     }
