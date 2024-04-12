@@ -15,10 +15,9 @@ public class AddedPrefab: MonoBehaviour
     public double Power { get; set; }
     public double XPower { get; set; }
 
+    //Создаем публичный список к которому будем обращяться из других фаилов
     public static List<int> CountUpdating = new List<int>();
     public static List<int> CountsUpdate = new List<int>();
-
-    //Создаем публичный список к которому будем обращяться из других фаилов
     public static List<AddedPrefab> Added = new List<AddedPrefab>();
 
 

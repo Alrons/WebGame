@@ -7,22 +7,13 @@ using static AddedPrefab;
 public class ForSummPower : MonoBehaviour
 {
     public Text SummPower;
-    private int Place1;
-    private int NomberPlase1;
-    private int NomberPlase2;
+    public int NomberPlase1;
+    public int NomberPlase2;
     private double PowerForPlace1;
     private double PowerForPlace2;
-    private int Place2;
-    private int countUpdate;
-    private double powerNow;
     private int nomberUbdate;
 
 
-    private void Start()
-    {
-        NomberPlase1 = 1;
-        NomberPlase2 = 2;
-    }
     // Update is called once per frame
     void Update()
     {
@@ -33,34 +24,26 @@ public class ForSummPower : MonoBehaviour
         }
         else
         {
-            if (Added[^1].Plase == NomberPlase1)
+            for (int i = 0; i < Added.Count; i++)
             {
-                if (countUpdate != CountUpdating.Count)
+                if (NomberPlase1 == Added[i].Plase)
                 {
-                    UpdatingSummPower(2);
-                    countUpdate = CountUpdating.Count;
+                    
+                    if (Added[i].Power != PowerForPlace1) 
+                    {
 
+                        PowerForPlace1 = Added[i].Power;
+                        UpdatingSummPower();
+                    }
                 }
-                else
+                if (NomberPlase2 == Added[i].Plase)
                 {
-                    PowerForPlace1 += Added[^1].Power;
-                    UpdatingSummPower(4);
+                    if (Added[i].Power != PowerForPlace2)
+                    {
+                        PowerForPlace2 = Added[i].Power;
+                        UpdatingSummPower();
+                    }
                 }
-            }
-            if (Added[^1].Plase == NomberPlase2)
-            {
-                if (countUpdate != CountUpdating.Count)
-                {
-                    UpdatingSummPower(3);
-                    countUpdate = CountUpdating.Count;
-
-                }
-                else
-                {
-                    PowerForPlace2 += Added[^1].Power;
-                    UpdatingSummPower(5);
-                }
-                
             }
             nomberUbdate += 1;
             
@@ -68,29 +51,8 @@ public class ForSummPower : MonoBehaviour
         }
         
     }
-    private void UpdatingSummPower(int variant)
+    private void UpdatingSummPower()
     {
-        
-        if (variant == 4)
-        {
-            powerNow += PowerForPlace1;
-        }
-        else if (variant == 5)
-        {
-            powerNow += PowerForPlace2;
-        }
-        else if (variant == 2)
-        {
-            powerNow += Added[countUpdate].Power - PowerForPlace1;
-
-        }
-        else
-        {
-            print(Added[countUpdate].Power);
-            powerNow += Added[countUpdate].Power - PowerForPlace2;
- 
-        }
-        SummPower.text = string.Format("{0}", powerNow);
-
+        SummPower.text = string.Format("{0}", PowerForPlace1 + PowerForPlace2);
     }
 }
