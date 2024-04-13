@@ -20,7 +20,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private RectTransform recetTransform;
     private Image image;//  артинка с префаба 
     private Vector2 startPos;// стартова€ позици€
-    private GameObject form; // обща€ переменна€ в которую мы будем назначать место дл€ большего удобства
+    private GameObject form;// обща€ переменна€ в которую мы будем назначать место дл€ большего удобства
 
     public GameObject dragObject; // наш объект
  
@@ -49,7 +49,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private string FailBy;//ѕросто дл€ запоменани€ 
 
 
-
+    private bool posNow;
 
 
 
@@ -79,12 +79,29 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private void FindForm(int nomber)
     {
         Place = nomber;
-        if (nomber == 1) form = Form1; // ≈сли место 1 то берем данные из места 1
+        if (nomber == 1) form = Form1; //      ≈сли место 1 то берем данные из места 1
         else if (nomber == 2) form = Form2; // ≈сли место 2 то берем данные из места 2 
         else if (nomber == 3) form = Form3; // ≈сли место 3 то берем данные из места 3 
         else if (nomber == 4) form = Form4; // ≈сли место 4 то берем данные из места 4 
         else if (nomber == 5) form = Form5; // ≈сли место 5 то берем данные из места 5 
         else if (nomber == 6) form = Form6; // ≈сли место 6 то берем данные из места 6 
+    }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject == form)
+        {
+            posNow = true;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        
+        if (collision.gameObject == form)
+        {
+            posNow = false;
+        }
     }
     public void OnBeginDrag(PointerEventData eventData)//подн€те 
     {
@@ -132,9 +149,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         Vector2 posForm = form.GetComponent<RectTransform>().anchoredPosition;
 
 
-        // ћатематика 
-        if (MathF.Abs(posObject.x - posForm.x) <= 100f &&
-            MathF.Abs(posObject.y - posForm.y) <= 100f)//“ут р€льно кака€ то математика
+        if (posNow)
         {
             
             // ≈сли цена на картинке меньше чем в коде 
