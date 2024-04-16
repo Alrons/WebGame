@@ -143,10 +143,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         scrollRect.vertical = true;
         image.raycastTarget = true;
-        Vector2 posObject = eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition;//определяет позицию объекта
 
-        //Берем позицию места в которое будем вставлять
-        Vector2 posForm = form.GetComponent<RectTransform>().anchoredPosition;
 
 
         if (posNow)
@@ -162,7 +159,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                 if (addedPrefab.CheckIfAdded(Place))
                 {
 
-                    addedPrefab.Updating(BackHealth,BackPower,BackXPower,Place);
+                    addedPrefab.Updating(BackHealth,BackXPower,Place);
                     CountsUpdate.Add(1);
                     Destroy(dragObject);
 

@@ -44,7 +44,7 @@ public class AddedPrefab: MonoBehaviour
         }
         return answer;
     }
-    public void Updating(int Health, double Power, double XPower, int plase)
+    public void Updating(int Health, double XPower, int plase)
     {
         CountUpdating.Add(plase);
         for (int i = 0;i < Added.Count;i++)
