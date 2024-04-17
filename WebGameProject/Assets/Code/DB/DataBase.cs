@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
+using static ClassOfItem;
+
+
+public class DataBase : MonoBehaviour
+{
+    private string URL = "https://localhost:7102/Items/All";
+
+    private void Start()
+    {
+        StartCoroutine(GetDatas());
+    }
+    IEnumerator GetDatas() 
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get(URL))
+        {
+            yield return request.SendWebRequest();
+
+            if(request.result== UnityWebRequest.Result.ConnectionError)
+                Debug.Log(request.error);
+            else
+            {
+                string json = request.downloadHandler.text;
+                SimpleJSON.JSONNode stats = SimpleJSON.JSON.Parse(json);
+                for (int i = 0; i<stats.Count; i++) 
+                {
+                    // string title, string description, int price, string Image, int place, int Health, double Power, double XPover
+
+                    list.Add(new ClassOfItem(stats[i]["title"], stats[i]["description"], stats[i]["price"], stats[i]["image"], stats[i]["place"], stats[i]["health"], stats[i]["power"], stats[i]["xPover"]));
+                }
+
+            }
+        }
+    }
+}

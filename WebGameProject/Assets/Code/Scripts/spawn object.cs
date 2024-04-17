@@ -33,14 +33,7 @@ public class SpawnObject : MonoBehaviour
     {
         // Заполняем список 
         // string title, string description, int price, string Image, int place, int Health, double Power, double XPover
-        list.Add(new ClassOfItem("Title1", "describtion1", 100, "Path", 4, 150, 15, 1.1));
-        list.Add(new ClassOfItem("Title2", "describtion2", 900, "Path", 3, 130, 16, 1.2));
-        list.Add(new ClassOfItem("Title3", "describtion3", 500, "Path", 2, 120, 17, 1.3));
-        list.Add(new ClassOfItem("Title3", "describtion3", 500, "Path", 2, 160, 20, 1.6));
-        list.Add(new ClassOfItem("Title4", "describtion4", 150, "Path", 1, 110, 18, 1.4));
-        list.Add(new ClassOfItem("Title5", "describtion5", 200, "Path", 2, 140, 19, 1.5));
-        list.Add(new ClassOfItem("Title4", "describtion4", 150, "Path", 1, 170, 21, 1.7));
-        list.Add(new ClassOfItem("Title5", "describtion5", 200, "Path", 2, 180, 22, 1.8));
+        
 
         // Указываем изначальное колличество цены
         coins = 10000;
