@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static ClassOfItem;
-using static DropDrag;
 using static GameObjId;
+using static ForCoins;
+
 public class SpawnObject : MonoBehaviour
 {
     public GameObject Box;
@@ -28,15 +29,8 @@ public class SpawnObject : MonoBehaviour
         return spawn;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Заполняем список 
-        // string title, string description, int price, string Image, int place, int Health, double Power, double XPover
-        
-
-        // Указываем изначальное колличество цены
-        coins = 10000;
+   
+    void Start()    {     
         
         StartCoroutine(SpawnCD());
         

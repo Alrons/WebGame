@@ -10,7 +10,7 @@ using static ClassOfItem;
 using static SpawnObject;
 using static AddedPrefab;
 using static GameObjId;
-using static IfAdded;
+using static ForCoins;
 using Unity.VisualScripting;
 
 
@@ -39,7 +39,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public ScrollRect scrollRect;
 
     // Переменные с которыми будет проходить математика
-    private int BackPrice;
+    private int BackPrice; //цена блока
     private int BackHealth;
     private double BackPower;
     private double BackXPower;
@@ -137,7 +137,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         form.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0.1f);//подсветка
     }
 
-
+    //нужны перменные в метод BackPrice, coins*, posNow
 
     public void OnEndDrag(PointerEventData eventData)//опускание 
     {
@@ -148,43 +148,9 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         if (posNow)
         {
-            
             // Если цена на картинке меньше чем в коде 
-            if (BackPrice <= coins)
-            {
-                AddedPrefab addedPrefab = new AddedPrefab();
-                this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение к позициям
-                
-                form.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);//подсветка
-                if (addedPrefab.CheckIfAdded(Place))
-                {
-
-                    addedPrefab.Updating(BackHealth,BackXPower,Place);
-                    CountsUpdate.Add(1);
-                    Destroy(dragObject);
-
-                }
-                else
-                {
-                    CountsUpdate.Add(1);
-                    //Добовляем в список в котором хранятся добавленные предметы
-                    Added.Add(new AddedPrefab(Place, CopyPref(this.dragObject, this.transform.position, form.transform), BackHealth, BackPower, BackXPower));
-                    Destroy(this.dragObject); // Унечтожаем объект который мы копировали 
-                }
-                
-                
-                coins = coins - BackPrice;// Вычитаем из банка
-            }
-            //Если цена больше чем есть в банке мы на 2 секунды меняем таитл на ДЕНЬГИ ГДЕ!
-            else
-            {
-                form.GetComponent<Image>().color = new Color(255f, 0f, 0f, 0.5f);
-                this.transform.position = startPos;// возвращение на место если условие не верно
-                FailBy = Title.text;//Сохраняем текст в переменную
-                Title.text = "Деньги где!";// Заменяем текст тайтла
-                StartCoroutine(RetarnTitle());// Переход на метод в котором стоит таимер на 2 секунды и возращяем значение 
-                
-            }
+            Buy(BackPrice, CoinsOnebank);
+            
         }
         else
         {
@@ -194,5 +160,45 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         }
 
     }
+   
+    public void Buy(int BackPrice, int coins)
+    {
+        if (BackPrice <= coins)
+        {
+            AddedPrefab addedPrefab = new AddedPrefab();
+            this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение к позициям
+
+            form.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);//подсветка
+            if (addedPrefab.CheckIfAdded(Place))
+            {
+
+                addedPrefab.Updating(BackHealth, BackXPower, Place);
+                CountsUpdate.Add(1);
+                Destroy(dragObject);
+
+            }
+            else
+            {
+                CountsUpdate.Add(1);
+                //Добовляем в список в котором хранятся добавленные предметы
+                Added.Add(new AddedPrefab(Place, CopyPref(this.dragObject, this.transform.position, form.transform), BackHealth, BackPower, BackXPower));
+                Destroy(this.dragObject); // Унечтожаем объект который мы копировали 
+            }
+
+
+            coins = coins - BackPrice;// Вычитаем из банка
+        }
+        //Если цена больше чем есть в банке мы на 2 секунды меняем таитл на ДЕНЬГИ ГДЕ!
+        else
+        {
+            form.GetComponent<Image>().color = new Color(255f, 0f, 0f, 0.5f);
+            this.transform.position = startPos;// возвращение на место если условие не верно
+            FailBy = Title.text;//Сохраняем текст в переменную
+            Title.text = "Деньги где!";// Заменяем текст тайтла
+            StartCoroutine(RetarnTitle());// Переход на метод в котором стоит таимер на 2 секунды и возращяем значение 
+
+        }
+    }
 
 }
+

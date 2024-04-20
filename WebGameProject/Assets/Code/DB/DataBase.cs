@@ -8,7 +8,7 @@ using static ClassOfItem;
 
 public class DataBase : MonoBehaviour
 {
-    private string URL = "https://localhost:7102/Items/All";
+    private string URL = "https://localhost:7017/AdminPanel/AllItems";
 
     private void Start()
     {

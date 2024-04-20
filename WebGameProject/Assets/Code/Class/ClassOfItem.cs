@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEditor.SceneManagement;
 using UnityEngine; 
 //using Services.Interfaces.ICatalog; 
@@ -19,7 +20,8 @@ public class ClassOfItem //: ICatalog
     public double XPover { get; set; }
     //—оздаем публичный список к которому будем обращ€тьс€ из других фаилов
     public static List<ClassOfItem> list = new List<ClassOfItem>();
-    public static int coins;
+       
+
 
     //  онструктор
     public ClassOfItem(string title, string description, int price, string Image, int place, int Health, double Power, double XPover)
