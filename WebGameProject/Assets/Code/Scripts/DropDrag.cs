@@ -37,7 +37,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public Text Power;
     public Text XPower;
     public ScrollRect scrollRect;
-
+    public Text IdRevard;
     // Переменные с которыми будет проходить математика
     private int BackPrice; //цена блока
     private int BackHealth;
@@ -50,12 +50,11 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
 
     private bool posNow;
-
-
-
+    private int BackCurrency;
 
     void Start()
     {
+        
         recetTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
 
@@ -65,12 +64,14 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             // Сравниваем тайтлы
             if (GameObjects[i].GameObject == dragObject)
             {
+                
                 // Берем из списка номер места и передаем в метот, где мы берем коардинаты из этого места
                 FindForm(list[i].Place);
                 BackPrice = list[i].Price;
                 BackHealth = list[i].Health;
                 BackPower = list[i].Power;
                 BackXPower = list[i].XPover;
+                BackCurrency = list[i].Сurrency;
             }
         }
         // Берем последнее значение из списка и сравниваем 2 тайтла, который в списке и который в префабе если совпадает, то выбираем место 6
@@ -105,13 +106,16 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     }
     public void OnBeginDrag(PointerEventData eventData)//подняте 
     {
+
         if (dragObject == GameObjects[^1].GameObject)
         {
+            
             FindForm(6);
             BackPrice = list[^1].Price;
             BackHealth = list[^1].Health;
             BackPower = list[^1].Power;
             BackXPower = list[^1].XPover;
+            BackCurrency = list[^1].Сurrency;
         }
         scrollRect.vertical = false;
         image.raycastTarget = false;
@@ -148,8 +152,23 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         if (posNow)
         {
-            // Если цена на картинке меньше чем в коде 
-            Buy(BackPrice, CoinsOnebank);
+            if(Convert.ToString(BackCurrency)=="1")
+            {
+                CoinsOneBank = Buy(BackPrice, CoinsOneBank);
+            }
+            else if(Convert.ToString(BackCurrency)=="2")
+            {
+                CoinsTwoBank = Buy(BackPrice, CoinsTwoBank);
+            }
+            else if (Convert.ToString(BackCurrency)=="3")
+            {
+                CoinsThreeBank = Buy(BackPrice, CoinsThreeBank);
+            }
+            else if (Convert.ToString(BackCurrency)=="4")
+            {
+                CoinsFourBank = Buy(BackPrice, CoinsFourBank);
+            }
+            //Если цена на картинке меньше чем в коде
             
         }
         else
@@ -161,14 +180,15 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     }
    
-    public void Buy(int BackPrice, int coins)
+    public int Buy(int BackPrice, int coins)
     {
         if (BackPrice <= coins)
         {
+            form.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);//подсветка
             AddedPrefab addedPrefab = new AddedPrefab();
             this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение к позициям
 
-            form.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);//подсветка
+            
             if (addedPrefab.CheckIfAdded(Place))
             {
 
@@ -186,7 +206,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             }
 
 
-            coins = coins - BackPrice;// Вычитаем из банка
+          
         }
         //Если цена больше чем есть в банке мы на 2 секунды меняем таитл на ДЕНЬГИ ГДЕ!
         else
@@ -198,6 +218,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             StartCoroutine(RetarnTitle());// Переход на метод в котором стоит таимер на 2 секунды и возращяем значение 
 
         }
+         return coins = coins - BackPrice;// Вычитаем из банка
     }
 
 }

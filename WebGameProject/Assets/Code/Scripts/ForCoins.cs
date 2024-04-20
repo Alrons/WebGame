@@ -7,7 +7,7 @@ using static ClassOfItem;
 
 public class ForCoins : MonoBehaviour
 {
-    public static int CoinsOnebank = 1000;
+    public static int CoinsOneBank = 1000;
     public static int CoinsTwoBank = 1000;
     public static int CoinsThreeBank = 1000;
     public static int CoinsFourBank = 1000;
@@ -24,7 +24,7 @@ public class ForCoins : MonoBehaviour
 
         //берем значение из места где мы храним цену и заменяем ее в визуальной части
 
-        CoinsOne.text = Convert.ToString(CoinsOnebank);
+        CoinsOne.text = Convert.ToString(CoinsOneBank);
         CoinsTwo.text = Convert.ToString(CoinsTwoBank);
         CoinsThree.text = Convert.ToString(CoinsThreeBank);
         CoinsFour.text = Convert.ToString(CoinsFourBank);
@@ -36,26 +36,26 @@ public class ForCoins : MonoBehaviour
     {
         // Если визуальная цена отличается от значения в месте где мы ее храним, то мы наще колличество
         
-        if (CoinsOne.text != Convert.ToString(CoinsOnebank))
+        if (CoinsOne.text != Convert.ToString(CoinsOneBank))
         {
             //берем значение из места где мы храним цену и заменяем ее в визуальной части
-            CoinsOne.text = Convert.ToString(CoinsOnebank);
+            CoinsOne.text = Convert.ToString(CoinsOneBank);
         }
-        //else if(CoinsTwo.text != Convert.ToString(CoinsTwoBank))
-        //{
-        //    CoinsOne.text = Convert.ToString(CoinsTwoBank);
-        //}
-        //else if (CoinsThree.text != Convert.ToString(CoinsThreeBank))
-        //{
-        //    CoinsOne.text = Convert.ToString(CoinsThreeBank);
-        //}
-        //else if (CoinsFour.text != Convert.ToString(CoinsFourBank))
-        //{
-        //    CoinsOne.text = Convert.ToString(CoinsFourBank);
-        //}
+        else if (CoinsTwo.text != Convert.ToString(CoinsTwoBank))
+        {
+            CoinsTwo.text = Convert.ToString(CoinsTwoBank);
+        }
+        else if (CoinsThree.text != Convert.ToString(CoinsThreeBank))
+        {
+            CoinsThree.text = Convert.ToString(CoinsThreeBank);
+        }
+        else if (CoinsFour.text != Convert.ToString(CoinsFourBank))
+        {
+            CoinsFour.text = Convert.ToString(CoinsFourBank);
+        }
 
 
 
     }
-    
+
 }

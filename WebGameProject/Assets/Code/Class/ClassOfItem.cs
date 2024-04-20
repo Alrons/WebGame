@@ -15,6 +15,7 @@ public class ClassOfItem //: ICatalog
     public int Place {  get; set; }
     public int Health { get; set; }
     public double Power { get; set; }
+    public int Сurrency {  get; set; }
 
     // Коафицент умнажения мощьности при добовлнения еще одного item в одно и тоже место
     public double XPover { get; set; }
@@ -24,7 +25,7 @@ public class ClassOfItem //: ICatalog
 
 
     // Конструктор
-    public ClassOfItem(string title, string description, int price, string Image, int place, int Health, double Power, double XPover)
+    public ClassOfItem(string title, string description, int price, string Image, int place, int Health, double Power, double XPover, int Сurrency)
     {
         this.Title = title;
         this.Description = description;
@@ -34,6 +35,7 @@ public class ClassOfItem //: ICatalog
         this.Health = Health;
         this.Power = Power;
         this.XPover = XPover;
+        this.Сurrency = Сurrency;
 
     }
     

@@ -9,6 +9,7 @@ using static ClassOfItem;
 public class DataBase : MonoBehaviour
 {
     private string URL = "https://localhost:7017/AdminPanel/AllItems";
+    public int Currency;
 
     private void Start()
     {
@@ -30,7 +31,8 @@ public class DataBase : MonoBehaviour
                 {
                     // string title, string description, int price, string Image, int place, int Health, double Power, double XPover
 
-                    list.Add(new ClassOfItem(stats[i]["title"], stats[i]["description"], stats[i]["price"], stats[i]["image"], stats[i]["place"], stats[i]["health"], stats[i]["power"], stats[i]["xPover"]));
+                    list.Add(new ClassOfItem(stats[i]["title"], stats[i]["description"], stats[i]["price"], stats[i]["image"], stats[i]["place"], 
+                        stats[i]["health"], stats[i]["power"], stats[i]["xPover"], stats[i]["ñurrency"]));
                 }
 
             }
