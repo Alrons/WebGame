@@ -23,13 +23,6 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private GameObject form;// общая переменная в которую мы будем назначать место для большего удобства
 
     public GameObject dragObject; // наш объект
- 
-    public GameObject Form1;//место куда мы будем вставлять форму
-    public GameObject Form2;//место куда мы будем вставлять форму
-    public GameObject Form3;//место куда мы будем вставлять форму
-    public GameObject Form4;//место куда мы будем вставлять форму
-    public GameObject Form5;//место куда мы будем вставлять форму
-    public GameObject Form6;//место куда мы будем вставлять форму 
 
     public Text Title;//Тайтл основного префаба 
     public Text price;//Цена основоного префаба 
@@ -72,6 +65,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                 BackPower = list[i].Power;
                 BackXPower = list[i].XPover;
                 BackCurrency = list[i].Сurrency;
+                Place = list[i].Place;
             }
         }
         // Берем последнее значение из списка и сравниваем 2 тайтла, который в списке и который в префабе если совпадает, то выбираем место 6
@@ -79,13 +73,13 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     }
     private void FindForm(int nomber)
     {
-        Place = nomber;
-        if (nomber == 1) form = Form1; //      Если место 1 то берем данные из места 1
-        else if (nomber == 2) form = Form2; // Если место 2 то берем данные из места 2 
-        else if (nomber == 3) form = Form3; // Если место 3 то берем данные из места 3 
-        else if (nomber == 4) form = Form4; // Если место 4 то берем данные из места 4 
-        else if (nomber == 5) form = Form5; // Если место 5 то берем данные из места 5 
-        else if (nomber == 6) form = Form6; // Если место 6 то берем данные из места 6 
+        for (int i = 0; i < PrefabFD.Count; i++)
+        {
+            if (PrefabFD[i].count == nomber)
+            {
+                form = PrefabFD[i].GameObject;
+            }
+        }
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -109,13 +103,13 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         if (dragObject == GameObjects[^1].GameObject)
         {
-            
-            FindForm(6);
+            FindForm(list[^1].Place);
             BackPrice = list[^1].Price;
             BackHealth = list[^1].Health;
             BackPower = list[^1].Power;
             BackXPower = list[^1].XPover;
             BackCurrency = list[^1].Сurrency;
+            Place = list[^1].Place;
         }
         scrollRect.vertical = false;
         image.raycastTarget = false;
@@ -152,19 +146,19 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         if (posNow)
         {
-            if(Convert.ToString(BackCurrency)=="1")
+            if(BackCurrency==1)
             {
                 CoinsOneBank = Buy(BackPrice, CoinsOneBank);
             }
-            else if(Convert.ToString(BackCurrency)=="2")
+            else if(BackCurrency==2)
             {
                 CoinsTwoBank = Buy(BackPrice, CoinsTwoBank);
             }
-            else if (Convert.ToString(BackCurrency)=="3")
+            else if (BackCurrency==3)
             {
                 CoinsThreeBank = Buy(BackPrice, CoinsThreeBank);
             }
-            else if (Convert.ToString(BackCurrency)=="4")
+            else if (BackCurrency==4)
             {
                 CoinsFourBank = Buy(BackPrice, CoinsFourBank);
             }
@@ -188,10 +182,9 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             AddedPrefab addedPrefab = new AddedPrefab();
             this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение к позициям
 
-            
+           
             if (addedPrefab.CheckIfAdded(Place))
             {
-
                 addedPrefab.Updating(BackHealth, BackXPower, Place);
                 CountsUpdate.Add(1);
                 Destroy(dragObject);

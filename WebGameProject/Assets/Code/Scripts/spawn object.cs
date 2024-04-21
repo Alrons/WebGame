@@ -25,7 +25,7 @@ public class SpawnObject : MonoBehaviour
         var spawn = Instantiate(box, position, Quaternion.identity);
         spawn.transform.SetParent(setparent.transform);
         spawn.transform.localScale = new Vector3(1, 1, 1);
-
+        
         return spawn;
     }
 
