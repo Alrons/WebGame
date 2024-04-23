@@ -23,7 +23,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private GameObject form;// общая переменная в которую мы будем назначать место для большего удобства
 
     public GameObject dragObject; // наш объект
-
+    
     public Text Title;//Тайтл основного префаба 
     public Text price;//Цена основоного префаба 
     public Text Health;
@@ -80,6 +80,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                 form = PrefabFD[i].GameObject;
             }
         }
+        
     }
 
     public void OnTriggerStay2D(Collider2D collision)

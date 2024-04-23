@@ -21,7 +21,7 @@ public class SpawnPlaseFD : MonoBehaviour
         // Колличество колонок
         CountColum = 3;
         // Количество линий
-        CountLine = 4;
+        CountLine = 2;
         // Переменная которая передает в список номер копированного элемента 
         Number = 1;
         float x = Prefab.transform.position.x * -1;
