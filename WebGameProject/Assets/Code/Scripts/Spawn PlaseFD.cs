@@ -26,8 +26,8 @@ public class SpawnPlaseFD : MonoBehaviour
         //CountLine = 3;
         // Переменная которая передает в список номер копированного элемента 
         Number = 1;
-        float x = Prefab.transform.position.x * -2;
-        float y = (float)(Prefab.transform.position.y * -1);
+        float x = (float)(Prefab.transform.position.x * -0.8);
+        float y = (float)(Prefab.transform.position.y * -0.5);
 
         for (int i = 0; i < CountLine; i++)
         {

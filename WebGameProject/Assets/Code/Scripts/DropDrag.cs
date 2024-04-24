@@ -11,6 +11,7 @@ using static SpawnObject;
 using static AddedPrefab;
 using static GameObjId;
 using static ForCoins;
+using static DataBase;
 using Unity.VisualScripting;
 
 
@@ -186,17 +187,34 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
            
             if (addedPrefab.CheckIfAdded(Place))
             {
+                
                 addedPrefab.Updating(BackHealth, BackXPower, Place);
                 CountsUpdate.Add(1);
+                ForSummPower ForSummPower = new ForSummPower();
+                ForSummPower.UpdatingSummPower(Place, BackPower);
                 Destroy(dragObject);
 
             }
             else
             {
+                int rowNumber = (Place - 1) / CountColum + 1;
+                for (int i = 0; i < LinePower.Count; i++)
+                {
+                    if (LinePower[i].count + 1 == rowNumber)
+                    {
+                        LinePower[i].Power += BackPower;
+                        double SummingPower = LinePower[i].Power;
+                        LinePower[i].Text.text = string.Format("{0}", SummingPower);
+                    }
+                    
+                   
+                }
                 CountsUpdate.Add(1);
                 //Добовляем в список в котором хранятся добавленные предметы
                 Added.Add(new AddedPrefab(Place, CopyPref(this.dragObject, this.transform.position, form.transform), BackHealth, BackPower, BackXPower));
+                
                 Destroy(this.dragObject); // Унечтожаем объект который мы копировали 
+
             }
 
 

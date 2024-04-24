@@ -12,6 +12,7 @@ public class GameObjId
     public GameObject GameObject { get; }
     public Text Text { get; set; }
     public int count { get; }
+    public double Power { get; set; }
 
 
 
@@ -30,5 +31,6 @@ public class GameObjId
     {
         this.Text = text;
         this.count = count;
+        this.Power = 0;
     }
 }

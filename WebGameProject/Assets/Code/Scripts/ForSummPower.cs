@@ -1,37 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static AddedPrefab;
+using static DataBase;
 using static GameObjId;
-using static SpawnPlaseFD;
+using static AddedPrefab;
 public class ForSummPower : MonoBehaviour
 {
     public Text SummPower;
-    public int NomberPlase1;
-    public int NomberPlase2;
-    private int nomberUbdate;
-    private double Power;
-    private int LineNomber;
+    private int NomberLine;
+    private List<double> Power;
+    private double SummingPower;
 
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-
-        if (nomberUbdate == CountsUpdate.Count)
-        {
-
-        }
-        else
-        {
-            nomberUbdate += 1;
-        }
-
+        //Debug.Log(LinePower.Count);
+        //for (int i = 0; i < LinePower.Count; i++)
+        //{
+        //    Debug.Log(LinePower[i].Text == SummPower);
+            
+        //    if (LinePower[i].Text == SummPower)
+        //    {
+        //        NomberLine = LinePower[i].count;
+        //    }
+        //}
+       
     }
-    private void UpdatingSummPower()
+    public void UpdatingSummPower(int plase, double power)
     {
-        SummPower.text = string.Format("{0}", Power);
+        int startColumn = (NomberLine - 1) * CountColum + 1;
+        int endColumn = NomberLine * CountColum;
+        if (startColumn <= plase && plase <= endColumn)
+        {
+            SummingPower += power;
+        }
+        
+        SummPower.text = string.Format("{0}", SummingPower);
     }
 }
