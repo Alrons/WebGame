@@ -6,26 +6,28 @@ using UnityEngine.UIElements;
 using static SpawnObject;
 using static GameObjId;
 using UnityEditor.Tilemaps;
+using static DataBase;
 
 public class SpawnPlaseFD : MonoBehaviour
 {
     public GameObject Prefab;
     public Transform Canvas;
     public Text ForLine;
-    public static int CountColum;
-    public static int CountLine;
     private int Number;
+    
+
 
     void Start()
     {
+        
         // Колличество колонок
-        CountColum = 3;
+        //  CountColum = 3;
         // Количество линий
-        CountLine = 2;
+        //CountLine = 3;
         // Переменная которая передает в список номер копированного элемента 
         Number = 1;
-        float x = Prefab.transform.position.x * -1;
-        float y = (float)(Prefab.transform.position.y * -0.5);
+        float x = Prefab.transform.position.x * -2;
+        float y = (float)(Prefab.transform.position.y * -1);
 
         for (int i = 0; i < CountLine; i++)
         {

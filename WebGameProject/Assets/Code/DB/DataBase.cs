@@ -1,23 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using static ClassOfItem;
-using static SpawnPlaseFD;
+
 
 
 public class DataBase : MonoBehaviour
 {
     private string URL = "https://localhost:7017/AdminPanel/AllItems";
     private string URLSize = "https://localhost:7017/ManageSize/SizeTable";
-    public int Currency;
+    public static int CountColum;
+    public static int CountLine;
 
-    private void Start()
+
+    public void Awake()
     {
         StartCoroutine(GetDatas());
-
+        StartCoroutine(GetSize());
     }
+
+
+    
     IEnumerator GetDatas() 
     {
         using (UnityWebRequest request = UnityWebRequest.Get(URL))
@@ -39,6 +45,24 @@ public class DataBase : MonoBehaviour
                 }
             }
         }
-    }
 
+    }// считывание Items 
+    IEnumerator GetSize()
+    {
+
+        using (UnityWebRequest request = UnityWebRequest.Get(URLSize))
+        {
+            yield return request.SendWebRequest();
+            if (request.result == UnityWebRequest.Result.ConnectionError)
+                Debug.Log(request.error);
+            else
+            {
+                string json = request.downloadHandler.text;
+                SimpleJSON.JSONNode size = SimpleJSON.JSON.Parse(json);
+                CountColum = size["height"];
+                CountLine = size["width"];
+            }
+        }
+    } //считываение размеров сетки
 }
+
