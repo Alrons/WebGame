@@ -174,8 +174,18 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         }
 
+
     }
-   
+    
+    private void MassagaIfAdded(string ChangeTitle)
+    {
+        form.GetComponent<Image>().color = new Color(255f, 0f, 0f, 0.5f);
+        this.transform.position = startPos;// возвращение на место если условие не верно
+        FailBy = Title.text;//Сохраняем текст в переменную
+        Title.text = ChangeTitle;// Заменяем текст тайтла
+        StartCoroutine(RetarnTitle());// Переход на метод в котором стоит таимер на 2 секунды и возращяем значение 
+    }
+
     public int Buy(int BackPrice, int coins)
     {
         if (BackPrice <= coins)
@@ -187,12 +197,8 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
            
             if (addedPrefab.CheckIfAdded(Place))
             {
-                
-                addedPrefab.Updating(BackHealth, BackXPower, Place);
-                CountsUpdate.Add(1);
-                ForSummPower ForSummPower = new ForSummPower();
-                ForSummPower.UpdatingSummPower(Place, BackPower);
-                Destroy(dragObject);
+
+                MassagaIfAdded("Место уже занято!");
 
             }
             else
@@ -223,11 +229,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         //Если цена больше чем есть в банке мы на 2 секунды меняем таитл на ДЕНЬГИ ГДЕ!
         else
         {
-            form.GetComponent<Image>().color = new Color(255f, 0f, 0f, 0.5f);
-            this.transform.position = startPos;// возвращение на место если условие не верно
-            FailBy = Title.text;//Сохраняем текст в переменную
-            Title.text = "Деньги где!";// Заменяем текст тайтла
-            StartCoroutine(RetarnTitle());// Переход на метод в котором стоит таимер на 2 секунды и возращяем значение 
+            MassagaIfAdded("Деньги где!");
 
         }
          return coins = coins - BackPrice;// Вычитаем из банка

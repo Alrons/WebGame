@@ -10,8 +10,8 @@ using static ClassOfItem;
 
 public class DataBase : MonoBehaviour
 {
-    private string URL = "https://localhost:7017/AdminPanel/AllItems";
-    private string URLSize = "https://localhost:7017/ManageSize/SizeTable";
+    private string URL = "https://localhost:7139/api/Items";
+    private string URLSize = "https://localhost:7139/api/SizeTables/1";
     public static int CountColum;
     public static int CountLine;
 

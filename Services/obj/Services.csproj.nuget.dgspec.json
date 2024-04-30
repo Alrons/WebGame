@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "A:\\GitRepository\\WebGame\\Services\\Services.csproj": {}
+    "A:\\GitRepository\\NewWebGame\\1\\WebGame\\Services\\Services.csproj": {}
   },
   "projects": {
-    "A:\\GitRepository\\WebGame\\Services\\Services.csproj": {
+    "A:\\GitRepository\\NewWebGame\\1\\WebGame\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\GitRepository\\WebGame\\Services\\Services.csproj",
+        "projectUniqueName": "A:\\GitRepository\\NewWebGame\\1\\WebGame\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "A:\\GitRepository\\WebGame\\Services\\Services.csproj",
+        "projectPath": "A:\\GitRepository\\NewWebGame\\1\\WebGame\\Services\\Services.csproj",
         "packagesPath": "C:\\Users\\titun\\.nuget\\packages\\",
-        "outputPath": "A:\\GitRepository\\WebGame\\Services\\obj\\",
+        "outputPath": "A:\\GitRepository\\NewWebGame\\1\\WebGame\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
