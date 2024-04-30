@@ -602,6 +602,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -721,6 +722,22 @@ MonoBehaviour:
   Prefab: {fileID: 1427538997}
   Canvas: {fileID: 1661889429}
   ForLine: {fileID: 1816653901}
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 51
+  m_MaxRayIntersections: 0
 --- !u!1 &532601726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1195,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167659197}
   m_CullTransparentMesh: 1
+--- !u!1 &1288898095 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3792628672543542011, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+  m_PrefabInstance: {fileID: 5647795064224801840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1288898100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288898095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cb8322bdea643479bc55081baa943a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjects: {fileID: 3358780066129735865}
 --- !u!1 &1325820722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,9 +2157,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2064919251576010737, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074808309267291547, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Color.b
+      value: 0.11792451
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074808309267291547, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.11792451
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074808309267291547, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2971144458021034267, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314648469478162312, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792628672543542011, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116781525118331061, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4649190333467073378, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
       propertyPath: m_Name
       value: block
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649190333467073378, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101813418998403237, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773234222528431996, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7220212394799739266, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
       propertyPath: Context
@@ -2134,10 +2213,21 @@ PrefabInstance:
       propertyPath: scrollRect
       value: 
       objectReference: {fileID: 1167659199}
+    - target: {fileID: 7961098007505885963, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495103799576345202, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3792628672543542011, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1288898100}
   m_SourcePrefab: {fileID: 100100000, guid: cc6cca4c1ed97c544ad882eaa3cace5f, type: 3}
 --- !u!114 &5862081977322867990 stripped
 MonoBehaviour:

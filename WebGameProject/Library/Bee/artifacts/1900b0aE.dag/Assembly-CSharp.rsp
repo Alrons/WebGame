@@ -383,6 +383,7 @@
 "Assets/Code/Interfaces/IPurcase.cs"
 "Assets/Code/Scripts/DropDrag.cs"
 "Assets/Code/Scripts/ForCoins.cs"
+"Assets/Code/Scripts/ForDelete.cs"
 "Assets/Code/Scripts/ForSummPower.cs"
 "Assets/Code/Scripts/ForTotalPower.cs"
 "Assets/Code/Scripts/IfAdded.cs"
