@@ -203,8 +203,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                 int rowNumber = (Place - 1) / (DataBase.GetCountColum()) + 1;
                 for (int i = 0; i < GameObjId.LinePower.Count; i++)
                 {
-                    Debug.Log($"1 {rowNumber}");
-                    Debug.Log($"2 {GameObjId.LinePower[i].count}");    
+
                     if (GameObjId.LinePower[i].count + 1 == rowNumber)
                     {
                         GameObjId.LinePower[i].Power += BackPower;
@@ -217,7 +216,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                 AddedPrefab.CountsUpdate.Add(1);
                 SpawnObject spawnObject = new SpawnObject();
                 //Добовляем в список в котором хранятся добавленные предметы
-                AddedPrefab.Added.Add(new AddedPrefab(Place, spawnObject.CopyPref(this.dragObject, this.transform.position, form.transform), BackHealth, BackPower, BackXPower));
+                AddedPrefab.Added.Add(new AddedPrefab(Place, spawnObject.CopyPref(this.dragObject, this.transform.position, form.transform), BackHealth, BackPower, BackXPower, BackPrice, BackCurrency));
                 
                 Destroy(this.dragObject); // Унечтожаем объект который мы копировали 
 

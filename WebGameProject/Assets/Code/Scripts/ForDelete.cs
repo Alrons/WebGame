@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class ForDelete : MonoBehaviour, IPointerClickHandler
 {
+    
     DataBase DB = new DataBase();
     public GameObject GameObjects;
     public void OnPointerClick(PointerEventData eventData)
@@ -20,11 +21,16 @@ public class ForDelete : MonoBehaviour, IPointerClickHandler
                 {
                     if (GameObjId.LinePower[j].count + 1 == rowNumber)
                     {
-                        GameObjId.LinePower[j].Power -= AddedPrefab.Added[j].Power;
+                        GameObjId.LinePower[j].Power -= AddedPrefab.Added[i].Power;
                         double SummingPower = GameObjId.LinePower[j].Power;
                         GameObjId.LinePower[j].Text.text = string.Format("{0}", SummingPower);
                     }
                 }
+                int Back = ((int)(AddedPrefab.Added[i].Price * 0.5));
+                if (AddedPrefab.Added[i].Ñurrency == 1) { ForCoins.CoinsOneBank += (Back); }
+                if (AddedPrefab.Added[i].Ñurrency == 2) { ForCoins.CoinsTwoBank += (Back); }
+                if (AddedPrefab.Added[i].Ñurrency == 3) { ForCoins.CoinsThreeBank += (Back); }
+                if (AddedPrefab.Added[i].Ñurrency == 4) { ForCoins.CoinsFourBank += (Back); }
                 Destroy(AddedPrefab.Added[i].GameObject);
                 AddedPrefab.Added.RemoveAt(i);
                 break;

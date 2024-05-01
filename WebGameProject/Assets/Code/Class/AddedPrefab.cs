@@ -14,6 +14,8 @@ public class AddedPrefab: MonoBehaviour
     public int Health { get; set; }
     public double Power { get; set; }
     public double XPower { get; set; }
+    public int Price { get; set; }
+    public int Сurrency { get; set; }
 
     //Создаем публичный список к которому будем обращяться из других фаилов
     public static List<int> CountUpdating = new List<int>();
@@ -25,13 +27,15 @@ public class AddedPrefab: MonoBehaviour
     {
 
     }
-    public AddedPrefab(int Plase, GameObject gameObject, int Health, double Power, double XPower)
+    public AddedPrefab(int Plase, GameObject gameObject, int Health, double Power, double XPower,int Price, int Currency)
     {
         this.Plase = Plase;
         this.GameObject = gameObject;
         this.Health = Health;
         this.Power = Power;
         this.XPower = XPower;
+        this.Price = Price;
+        this.Сurrency = Currency;
 
     }
 

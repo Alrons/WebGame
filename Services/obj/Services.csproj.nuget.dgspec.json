@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitRepository\\WebGame\\Services\\Services.csproj": {}
+    "C:\\GitHub_Repository\\WebGame\\Services\\Services.csproj": {}
   },
   "projects": {
-    "D:\\GitRepository\\WebGame\\Services\\Services.csproj": {
+    "C:\\GitHub_Repository\\WebGame\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitRepository\\WebGame\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\GitHub_Repository\\WebGame\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "D:\\GitRepository\\WebGame\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\IGOR\\.nuget\\packages\\",
-        "outputPath": "D:\\GitRepository\\WebGame\\Services\\obj\\",
+        "projectPath": "C:\\GitHub_Repository\\WebGame\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\titun\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHub_Repository\\WebGame\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\IGOR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\titun\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +38,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -60,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
