@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-using static SpawnObject;
-using static GameObjId;
 using UnityEditor.Tilemaps;
-using static DataBase;
+
 
 public class SpawnPlaseFD : MonoBehaviour
 {
@@ -14,29 +12,29 @@ public class SpawnPlaseFD : MonoBehaviour
     public Transform Canvas;
     public Text ForLine;
     private int Number;
-    
 
+    DataBase DB =  new DataBase();
+    public void Awake()
+    {
+        StartCoroutine(DB.GetItems());
+        StartCoroutine(DB.GetSize());
+    }
 
     void Start()
     {
-        
-        // Колличество колонок
-        //  CountColum = 3;
-        // Количество линий
-        //CountLine = 3;
-        // Переменная которая передает в список номер копированного элемента 
+       
         Number = 1;
-        float x = (float)(Prefab.transform.position.x * -0.8);
-        float y = (float)(Prefab.transform.position.y * -0.5);
+        float x = (float)(Prefab.transform.position.x * -1.5);
+        float y = (float)(Prefab.transform.position.y * -0.8);
 
-        for (int i = 0; i < CountLine; i++)
+        for (int i = 0; i < DataBase.GetCountLine(); i++)
         {
             
             SpawnObject spawnObject = new SpawnObject();
             int l = 0;
-            for (int j = 0; j < CountColum; j++)
+            for (int j = 0; j < DataBase.GetCountColum(); j++)
             {
-                PrefabFD.Add(new GameObjId(spawnObject.CopyPref(Prefab, new Vector2(Prefab.transform.position.x + x * j, Prefab.transform.position.y + y * i), Canvas), Number));
+                GameObjId.PrefabFD.Add(new GameObjId(spawnObject.CopyPref(Prefab, new Vector2(Prefab.transform.position.x + x * j, Prefab.transform.position.y + y * i), Canvas), Number));
                 Number += 1;
             
                 l = j + 1;
@@ -44,7 +42,7 @@ public class SpawnPlaseFD : MonoBehaviour
             var spawn = Instantiate(ForLine, new Vector3(Prefab.transform.position.x + x * l, Prefab.transform.position.y + y * i, Prefab.transform.position.z), Quaternion.identity);
             spawn.transform.SetParent(Canvas.transform);
             spawn.transform.localScale = new Vector3(1, 1, 1);
-            LinePower.Add(new GameObjId(spawn, i));
+            GameObjId.LinePower.Add(new GameObjId(spawn, i));
 
 
         }

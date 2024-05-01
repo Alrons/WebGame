@@ -5,13 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using UnityEditor.VersionControl;
-using JetBrains.Annotations;
-using static ClassOfItem;
-using static SpawnObject;
-using static AddedPrefab;
-using static GameObjId;
 using static ForCoins;
-using static DataBase;
+
 using Unity.VisualScripting;
 
 
@@ -46,6 +41,8 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private bool posNow;
     private int BackCurrency;
 
+    DataBase DB = new DataBase();
+    
     void Start()
     {
         
@@ -53,20 +50,20 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         image = GetComponent<Image>();
 
         // Перебераем список (без последнего значения) и сравниваем тайтлы (который в списке и в префабе), в зависимости то этого распределяем места которые берем из списка 
-        for (int i = 0; i < GameObjects.Count; i++)
+        for (int i = 0; i < GameObjId.GameObjects.Count; i++)
         {
             // Сравниваем тайтлы
-            if (GameObjects[i].GameObject == dragObject)
+            if (GameObjId.GameObjects[i].GameObject == dragObject)
             {
                 
                 // Берем из списка номер места и передаем в метот, где мы берем коардинаты из этого места
-                FindForm(list[i].Place);
-                BackPrice = list[i].Price;
-                BackHealth = list[i].Health;
-                BackPower = list[i].Power;
-                BackXPower = list[i].XPover;
-                BackCurrency = list[i].Сurrency;
-                Place = list[i].Place;
+                FindForm(ClassOfItem.list[i].Place);
+                BackPrice = ClassOfItem.list[i].Price;
+                BackHealth = ClassOfItem.list[i].Health;
+                BackPower = ClassOfItem.list[i].Power;
+                BackXPower = ClassOfItem.list[i].XPover;
+                BackCurrency = ClassOfItem.list[i].Сurrency;
+                Place = ClassOfItem.list[i].Place;
             }
         }
         // Берем последнее значение из списка и сравниваем 2 тайтла, который в списке и который в префабе если совпадает, то выбираем место 6
@@ -74,11 +71,11 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     }
     private void FindForm(int nomber)
     {
-        for (int i = 0; i < PrefabFD.Count; i++)
+        for (int i = 0; i < GameObjId.PrefabFD.Count; i++)
         {
-            if (PrefabFD[i].count == nomber)
+            if (GameObjId.PrefabFD[i].count == nomber)
             {
-                form = PrefabFD[i].GameObject;
+                form = GameObjId.PrefabFD[i].GameObject;
             }
         }
         
@@ -103,15 +100,15 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public void OnBeginDrag(PointerEventData eventData)//подняте 
     {
 
-        if (dragObject == GameObjects[^1].GameObject)
+        if (dragObject == GameObjId.GameObjects[^1].GameObject)
         {
-            FindForm(list[^1].Place);
-            BackPrice = list[^1].Price;
-            BackHealth = list[^1].Health;
-            BackPower = list[^1].Power;
-            BackXPower = list[^1].XPover;
-            BackCurrency = list[^1].Сurrency;
-            Place = list[^1].Place;
+            FindForm(ClassOfItem.list[^1].Place);
+            BackPrice = ClassOfItem.list[^1].Price;
+            BackHealth = ClassOfItem.list[^1].Health;
+            BackPower = ClassOfItem.list[^1].Power;
+            BackXPower = ClassOfItem.list[^1].XPover;
+            BackCurrency = ClassOfItem.list[^1].Сurrency;
+            Place = ClassOfItem.list[^1].Place;
         }
         scrollRect.vertical = false;
         image.raycastTarget = false;
@@ -193,7 +190,7 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             form.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);//подсветка
             AddedPrefab addedPrefab = new AddedPrefab();
             this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);//присоединение к позициям
-
+            
            
             if (addedPrefab.CheckIfAdded(Place))
             {
@@ -203,24 +200,24 @@ public class DropDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             }
             else
             {
-                int rowNumber = (Place - 1) / CountColum + 1;
-                for (int i = 0; i < LinePower.Count; i++)
+                int rowNumber = (Place - 1) / (DataBase.GetCountColum()) + 1;
+                for (int i = 0; i < GameObjId.LinePower.Count; i++)
                 {
                     Debug.Log($"1 {rowNumber}");
-                    Debug.Log($"2 {LinePower[i].count}");    
-                    if (LinePower[i].count + 1 == rowNumber)
+                    Debug.Log($"2 {GameObjId.LinePower[i].count}");    
+                    if (GameObjId.LinePower[i].count + 1 == rowNumber)
                     {
-                        LinePower[i].Power += BackPower;
-                        double SummingPower = LinePower[i].Power;
-                        LinePower[i].Text.text = string.Format("{0}", SummingPower);
+                        GameObjId.LinePower[i].Power += BackPower;
+                        double SummingPower = GameObjId.LinePower[i].Power;
+                        GameObjId.LinePower[i].Text.text = string.Format("{0}", SummingPower);
                     }
                     
                    
                 }
-                CountsUpdate.Add(1);
+                AddedPrefab.CountsUpdate.Add(1);
                 SpawnObject spawnObject = new SpawnObject();
                 //Добовляем в список в котором хранятся добавленные предметы
-                Added.Add(new AddedPrefab(Place, spawnObject.CopyPref(this.dragObject, this.transform.position, form.transform), BackHealth, BackPower, BackXPower));
+                AddedPrefab.Added.Add(new AddedPrefab(Place, spawnObject.CopyPref(this.dragObject, this.transform.position, form.transform), BackHealth, BackPower, BackXPower));
                 
                 Destroy(this.dragObject); // Унечтожаем объект который мы копировали 
 

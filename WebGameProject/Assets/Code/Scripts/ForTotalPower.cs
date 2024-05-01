@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static AddedPrefab;
+
 
 public class ForTotalPower : MonoBehaviour
 {
@@ -16,16 +16,16 @@ public class ForTotalPower : MonoBehaviour
     void Update()
     {
 
-        if (nomberUbdate == CountsUpdate.Count)
+        if (nomberUbdate == AddedPrefab.CountsUpdate.Count)
         {
 
         }
         else
         {
             TotalPower = 0;
-            for (int i = 0; i < Added.Count; i++)
+            for (int i = 0; i < AddedPrefab.Added.Count; i++)
             {
-                TotalPower += Added[i].Power;
+                TotalPower += AddedPrefab.Added[i].Power;
             }
             UpdatingSummPower();
             nomberUbdate += 1;

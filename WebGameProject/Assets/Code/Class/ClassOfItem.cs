@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEditor.SceneManagement;
 using UnityEngine; 
-//using Services.Interfaces.ICatalog; 
+
 // Шаблон для заполнения списка
 public class ClassOfItem //: ICatalog 
 {

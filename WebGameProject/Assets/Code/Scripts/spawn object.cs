@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static ClassOfItem;
-using static GameObjId;
-using static ForCoins;
+
+
+
 
 public class SpawnObject : MonoBehaviour
 {
@@ -58,23 +58,23 @@ public class SpawnObject : MonoBehaviour
         yield return new WaitForSeconds(TimeSpawn);
 
         
-        if (count != list.Count-1)
+        if (count != ClassOfItem.list.Count-1)
 
         {   // Изменяем изначальный преаб
-            ChangePref(list[count].Title, list[count].Price, list[count].Description, list[count].Health, list[count].Power, list[count].XPover);
+            ChangePref(ClassOfItem.list[count].Title, ClassOfItem.list[count].Price, ClassOfItem.list[count].Description, ClassOfItem.list[count].Health, ClassOfItem.list[count].Power, ClassOfItem.list[count].XPover);
             // Копируем префаб
             var gameobj = CopyPref(Box, Box.transform.position, CanvasObject);
 
-            GameObjects.Add(new GameObjId(gameobj, count));
+            GameObjId.GameObjects.Add(new GameObjId(gameobj, count));
             // Повторяем
             Repeat();
             count++;
         }
         else
         {
-            GameObjects.Add(new GameObjId(Box, count));
+            GameObjId.GameObjects.Add(new GameObjId(Box, count));
             // Если список подходит ко последнему значению, мы изменяем оригинальный префаб
-            ChangePref(list[count].Title, list[count].Price, list[count].Description, list[count].Health, list[count].Power, list[count].XPover);
+            ChangePref(ClassOfItem.list[count].Title, ClassOfItem.list[count].Price, ClassOfItem.list[count].Description, ClassOfItem.list[count].Health, ClassOfItem.list[count].Power, ClassOfItem.list[count].XPover);
         }
         
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XAdTQRvKQoOC7MxVoHNiCGJFHfC0SoKsf45MS2Uz8tZigAGf7dQciRwjSnuvtU+sW0XzqrtNshSEYs92QuH10w==",
+  "dgSpecHash": "t4LW0/BXNuDgOHNYwUixAfiYMfM9eZP8DCcO9O0dTrHzL6vccQHKhs/3t4ZM307DOefXkeB3BzdsXgFPoF9Mkw==",
   "success": true,
-  "projectFilePath": "A:\\GitRepository\\NewWebGame\\1\\WebGame\\Services\\Services.csproj",
+  "projectFilePath": "D:\\GitRepository\\WebGame\\Services\\Services.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

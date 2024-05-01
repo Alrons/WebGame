@@ -15,7 +15,7 @@ public class ForSummPower : MonoBehaviour
     private List<double> Power;
     private double SummingPower;
 
-
+    DataBase DB = new DataBase();
     // Update is called once per frame
     void Start()
     {
@@ -33,8 +33,8 @@ public class ForSummPower : MonoBehaviour
     }
     public void UpdatingSummPower(int plase, double power)
     {
-        int startColumn = (NomberLine - 1) * CountColum + 1;
-        int endColumn = NomberLine * CountColum;
+        int startColumn = (NomberLine - 1) * DataBase.GetCountColum() + 1;
+        int endColumn = NomberLine * DataBase.GetCountColum();
         if (startColumn <= plase && plase <= endColumn)
         {
             SummingPower += power;
