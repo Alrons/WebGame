@@ -31,10 +31,12 @@ public class SpawnPlaseFD : MonoBehaviour
 
         for (int i = 0; i < CountLine; i++)
         {
+            
+            SpawnObject spawnObject = new SpawnObject();
             int l = 0;
             for (int j = 0; j < CountColum; j++)
             {
-                PrefabFD.Add(new GameObjId(CopyPref(Prefab, new Vector2(Prefab.transform.position.x + x * j, Prefab.transform.position.y + y * i), Canvas), Number));
+                PrefabFD.Add(new GameObjId(spawnObject.CopyPref(Prefab, new Vector2(Prefab.transform.position.x + x * j, Prefab.transform.position.y + y * i), Canvas), Number));
                 Number += 1;
             
                 l = j + 1;

@@ -13,7 +13,7 @@ public class ForCoins : MonoBehaviour
     public static int CoinsFourBank = 1000;
 
     public Text CoinsOne;
-    public Text CoinsTwo;
+    public Text CoinsTwo; 
     public Text CoinsThree;
     public Text CoinsFour;
 

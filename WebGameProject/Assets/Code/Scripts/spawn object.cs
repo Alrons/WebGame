@@ -20,7 +20,7 @@ public class SpawnObject : MonoBehaviour
     public Text XPower;
     int count;
 
-    public static GameObject CopyPref(GameObject box, Vector3 position, Transform setparent)
+    public GameObject CopyPref(GameObject box, Vector3 position, Transform setparent)
     {
         var spawn = Instantiate(box, position, Quaternion.identity);
         spawn.transform.SetParent(setparent.transform);
@@ -56,7 +56,8 @@ public class SpawnObject : MonoBehaviour
     IEnumerator SpawnCD()
     {   // Если надо не спешное появление префабов 
         yield return new WaitForSeconds(TimeSpawn);
-  
+
+        
         if (count != list.Count-1)
 
         {   // Изменяем изначальный преаб

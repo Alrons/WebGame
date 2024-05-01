@@ -40,6 +40,7 @@ public class IfAdded : MonoBehaviour
         
         if (Cheack != 0)
         {
+            
             if (Added[Cheack-1].Health != int.Parse(Health.text))
             {
                 Health.text = string.Format("{0}",Added[Cheack - 1].Health);
